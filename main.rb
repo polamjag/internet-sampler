@@ -33,10 +33,15 @@ get '/' do
         settings.sockets << ws
       end
       ws.onmessage do |msg|
-        p msg
+        puts "Play: #{msg}"
         EM.next_tick do
           settings.sockets.each do |s|
-            play(get_abs_path(tracks[msg.to_s])) if tracks.include? msg.to_s
+            if tracks.include? msg.to_s
+              # play on server
+              play(get_abs_path(tracks[msg.to_s]))
+              # play on clients
+              s.send "play:#{msg.to_s}"
+            end
           end
         end
       end

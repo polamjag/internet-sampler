@@ -8,7 +8,12 @@ html
     script src="//code.jquery.com/jquery-2.1.4.min.js"
     script src="main.js"
   body
+    .checkbox.clickable
+      input type='checkbox' name='play-on-device' id='checkbox-play-on-device' checked="checked"
+      label for='checkbox-play-on-device' Play sound on this device
     .play-container
       - @tracks.each do |k, v|
-        .play data-track="#{k}" = k
+        .play.clickable data-track="#{k}"
+          | #{k}
+          audio src="#{v}" preload="auto" controls="none"
     #msgs

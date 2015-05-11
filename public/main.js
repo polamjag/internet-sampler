@@ -12,8 +12,9 @@ window.onload = (function(){
     var data = m.data;
     show('WebSocket msg: ' +  data);
     if (data.match(/^play:/) && document.getElementById('checkbox-play-on-device').checked) {
-      var target = data.replace(/^play:/, '');
-      $(".play[data-track=" + target + "] audio")[0].play();
+      target = $(".play[data-track=" + data.replace(/^play:/, '') + "] audio")[0];
+      target.currentTime = 0;
+      target.play();
     }
   };
 

@@ -10,9 +10,13 @@ set :server, 'thin'
 set :sockets, []
 
 tracks = {
-  emoi: "/Users/satoru/Dropbox/00_WIP/emoi.mp3",
-  saiko: "/Users/satoru/Dropbox/00_WIP/saiko.mp3"
+  "エモい" => "/mp3/emoi.mp3",
+  "最高" => "/mp3/saiko.mp3"
 }
+
+def get_abs_path(filename)
+  File.join(File.dirname(__FILE__), '/public', filename)
+end
 
 def play(file)
   spawn "afplay #{file}"
@@ -30,11 +34,11 @@ get '/' do
       end
       ws.onmessage do |msg|
         p msg
-        EM.next_tick {
-          settings.sockets.each{ |s|
-            play(tracks[msg.to_sym]) if tracks.include? msg.to_sym
-          }
-        }
+        EM.next_tick do
+          settings.sockets.each do |s|
+            play(get_abs_path(tracks[msg.to_s])) if tracks.include? msg.to_s
+          end
+        end
       end
       ws.onclose do
         warn("websocket closed")

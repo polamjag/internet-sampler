@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'bundler/setup'
 
 require 'sinatra'
@@ -31,6 +32,9 @@ get '/' do
       ws.onopen do
         ws.send("WebSocket connected!")
         settings.sockets << ws
+        settings.sockets.each do |s|
+          s.send "num:#{settings.sockets.length}"
+        end
       end
       ws.onmessage do |msg|
         puts "Play: #{msg}"
@@ -48,6 +52,9 @@ get '/' do
       ws.onclose do
         warn("websocket closed")
         settings.sockets.delete(ws)
+        settings.sockets.each do |s|
+          s.send "num:#{settings.sockets.length}"
+        end
       end
     end
   end

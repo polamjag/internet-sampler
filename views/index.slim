@@ -8,6 +8,8 @@ html
     script src="//code.jquery.com/jquery-2.1.4.min.js"
     script src="main.js"
   body
+    h1 Internet Sampler
+    #number = "*"
     .checkbox.clickable
       input type='checkbox' name='play-on-device' id='checkbox-play-on-device' checked="checked"
       label for='checkbox-play-on-device' Play sound on this device
@@ -17,3 +19,7 @@ html
           | #{k}
           audio src="#{v}" preload="auto" controls="none"
     #msgs
+    footer
+      p
+        | See repo at&nbsp;
+        a href="https://github.com/polamjag/internet-sampler" GitHub

@@ -15,6 +15,8 @@ window.onload = (function(){
       target = $(".play[data-track=" + data.replace(/^play:/, '') + "] audio")[0];
       target.currentTime = 0;
       target.play();
+    } else if (data.match(/^num:/)) {
+      document.getElementById("number").firstChild.nodeValue = data.replace(/^num:/, '');
     }
   };
 

@@ -70,6 +70,10 @@ body {
   opacity: 0;
 }
 
+.play .count {
+  font-size: 3em;
+}
+
 #msgs {
   display: block;
   border: 1px solid #777;

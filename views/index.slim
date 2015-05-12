@@ -18,10 +18,11 @@ html
       label for='checkbox-rewind-on-play' Rewind on play
 
     .play-container
-      - @tracks.each do |k, v|
-        .play.clickable data-track="#{k}"
-          | #{k}
-          audio src="#{v}" preload="auto" controls="none"
+      - @tracks.each do |track|
+        .play.clickable data-track="#{track[:slug]}"
+          .tag = track[:slug]
+          audio src="#{track[:path]}" preload="auto" controls="none"
+          .count = (track[:count] || 0)
     #msgs
     footer
       p

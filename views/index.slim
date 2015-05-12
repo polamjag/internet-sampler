@@ -13,6 +13,10 @@ html
     .checkbox.clickable
       input type='checkbox' name='play-on-device' id='checkbox-play-on-device' checked="checked"
       label for='checkbox-play-on-device' Play sound on this device
+    .checkbox.clickable
+      input type='checkbox' name='rewind-on-play' id='checkbox-rewind-on-play' checked="checked"
+      label for='checkbox-rewind-on-play' Rewind on play
+
     .play-container
       - @tracks.each do |k, v|
         .play.clickable data-track="#{k}"

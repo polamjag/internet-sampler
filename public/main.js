@@ -10,10 +10,12 @@ window.onload = (function(){
 
   ws.onmessage = function(m) {
     var data = m.data;
-    show('WebSocket msg: ' +  data);
+    show('msg: ' +  data);
     if (data.match(/^play:/) && document.getElementById('checkbox-play-on-device').checked) {
       target = $(".play[data-track=" + data.replace(/^play:/, '') + "] audio")[0];
-      target.currentTime = 0;
+      if (document.getElementById('checkbox-rewind-on-play').checked) {
+        target.currentTime = 0;
+      }
       target.play();
     } else if (data.match(/^num:/)) {
       document.getElementById("number").firstChild.nodeValue = data.replace(/^num:/, '');

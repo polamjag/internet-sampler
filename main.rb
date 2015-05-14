@@ -24,6 +24,11 @@ tracks = [
     slug: "最高",
     path: "/mp3/saiko.mp3",
     description: ""
+  },
+  {
+    slug: "Frontliner",
+    path: "/mp3/frontliner-fsharp-kick.mp3",
+    description: ""
   }
 ]
 

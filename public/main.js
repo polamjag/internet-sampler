@@ -32,7 +32,7 @@ window.onload = (function(){
     }
   };
 
-  $('.play').click(function(f){
+  $('.play').mousedown(function(f){
     tg = f.currentTarget.getAttribute('data-track');
     ws.send(tg);
     show('Sent: ' + tg);

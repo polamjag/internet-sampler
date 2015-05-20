@@ -7,6 +7,8 @@
 1. `bundle install --path vendor/bundle`
 1. `bundle exec rackup`
 
+[see blog post about this app (in Japanese)](http://polamjag.hatenablog.jp/entry/2015/05/15/044314)
+
 ## Credits
 
 `/public/mp3/emoi.mp3` and `/public/mp3/saiko.mp3` are licensed under CC-BY: http://p1kachu.net/pmannet/

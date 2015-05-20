@@ -1,5 +1,12 @@
 # INTERNET SAMPLER
 
+## Up and running
+
+1. install ruby, bundler and redis
+1. clone repo and chdir into it
+1. `bundle install --path vendor/bundle`
+1. `bundle exec rackup`
+
 ## Credits
 
 `/public/mp3/emoi.mp3` and `/public/mp3/saiko.mp3` are licensed under CC-BY: http://p1kachu.net/pmannet/

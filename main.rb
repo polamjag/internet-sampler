@@ -34,6 +34,12 @@ tracks = [
 
 redis = Redis.new host:"127.0.0.1", port:"6379"
 
+get '/api/tracks' do
+  tracks.each do |track|
+    track[:count] = redis.get(track[:slug])
+  end.to_json
+end
+
 get '/' do
   if !request.websocket?
     @tracks = tracks.each do |track|

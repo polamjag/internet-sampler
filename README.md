@@ -15,3 +15,4 @@
 
 `/public/mp3/frontliner-fsharp-kick.mp3` is licensed under CC-BY: https://soundcloud.com/frontliner/frontliner-hardstyle-kick
 
+`public/mp3/Gong-266566.mp3` is licensed under CC-BY: http://freesound.org/people/GowlerMusic/sounds/266566/

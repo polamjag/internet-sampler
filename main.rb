@@ -29,7 +29,7 @@ tracks = [
     slug: "銅鑼",
     path: "/mp3/Gong-266566.mp3",
     description: ""
-  }
+  },
   {
     slug: "Frontliner",
     path: "/mp3/frontliner-fsharp-kick.mp3",

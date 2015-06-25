@@ -7,8 +7,6 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'sinatra-websocket'
 
-require 'pry' if development?
-
 require 'redis'
 
 require 'slim'

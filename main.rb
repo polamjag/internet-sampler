@@ -7,12 +7,17 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'sinatra-websocket'
 
+require 'pry' if development?
+
 require 'redis'
 
 require 'slim'
 
-set :server, 'thin'
-set :sockets, []
+configure do
+  set :server, 'thin'
+  set :sockets, []
+  set :ws_url, ENV["WS_URL"]
+end
 
 tracks = [
   {
@@ -47,6 +52,7 @@ end
 
 get '/' do
   if !request.websocket?
+    @ws_url = (settings.ws_url || "ws://#{request.env['HTTP_HOST']}/")
     @tracks = tracks.each do |track|
       track[:count] = redis.get(track[:slug])
     end

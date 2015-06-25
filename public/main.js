@@ -4,7 +4,7 @@ window.onload = (function(){
     el.innerHTML = msg + '<br>' + el.innerHTML;
   };
 
-  var ws       = new WebSocket('ws://' + window.location.host + window.location.pathname);
+  var ws       = new WebSocket(ws_url);
   ws.onopen    = function()  { show('WebSocket opened'); };
   ws.onclose   = function()  {
     show('WebSocket closed');

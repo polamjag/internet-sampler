@@ -37,7 +37,7 @@ tracks = [
   }
 ]
 
-redis = Redis.new host:"127.0.0.1", port:"6379"
+redis = Redis.new host: "127.0.0.1", port:"6379"
 
 get '/api/tracks' do
   tracks.each do |track|

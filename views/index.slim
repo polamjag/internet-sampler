@@ -28,9 +28,14 @@ html
     #msgs
     footer
       p
-        a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-dnt="true" Tweet
-        javascript:
-          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+        .widgets
+          .widget
+            a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-dnt="true" Tweet
+            javascript:
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+          .widget
+            a.github-button href="https://github.com/polamjag/internet-sampler" data-style="mega" data-count-href="/polamjag/internet-sampler/stargazers" data-count-api="/repos/polamjag/internet-sampler#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star polamjag/internet-sampler on GitHub" Star
+            script#github-bjs src="https://buttons.github.io/buttons.js" async="async" defer="defer"
       p
         | See repo at&nbsp;
         a href="https://github.com/polamjag/internet-sampler" target="_blank" GitHub

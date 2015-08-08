@@ -92,6 +92,11 @@ body {
   }
 }
 
+.widgets .widget {
+  display: inline;
+  margin-right: .6em;
+}
+
 footer p {
   font-size: .8em;
 }

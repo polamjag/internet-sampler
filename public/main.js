@@ -15,7 +15,7 @@ window.onload = (function(){
     var data = $.parseJSON(m.data);
 
     if (data["type"] == "play") {
-      show("Play: " + data["slug"]);
+      show("Play: " + data["slug"] + " in latency " + (Date.now() - data["msec"]) + "msec");
       if (document.getElementById('checkbox-rewind-on-play').checked) {
         target = $(".play[data-track=" + data["slug"] + "] audio")[0];
         target.currentTime = 0;
@@ -34,7 +34,12 @@ window.onload = (function(){
 
   $('.play').mousedown(function(f){
     tg = f.currentTarget.getAttribute('data-track');
-    ws.send(tg);
+    ws.send(
+      JSON.stringify({
+        slug: tg,
+        msec: Date.now()
+      })
+    );
     show('Sent: ' + tg);
   });
 });

@@ -11,6 +11,12 @@ require 'redis'
 
 require 'slim'
 
+class Time
+  def msec
+    self.instance_eval { self.to_i * 1000 + (usec/1000) }
+  end
+end
+
 class Subscriber
   attr_reader :subscribers
 
@@ -83,14 +89,15 @@ class InternetSampler
     @sampler = sampler
   end
 
-  def play slug
+  def play slug, msec
     if @sampler.has_track? slug
       i = @sampler.incr slug
       EM.next_tick do
         @sub.broadcast({
           type: :play,
           count: i,
-          slug: slug
+          slug: slug,
+          msec: msec
         }.to_json)
       end
     else
@@ -156,10 +163,9 @@ configure do
 end
 
 get '/' do
-  if !request.websocket?
+  unless request.websocket?
     @ws_url = (settings.ws_url || "ws://#{request.env['HTTP_HOST']}/")
     @tracks = settings.is.tracks
-    p @tracks
     slim :index
   else
     request.websocket do |ws|
@@ -173,8 +179,10 @@ get '/' do
       end
 
       ws.onmessage do |msg|
-        puts "Play: #{msg}"
-        settings.is.play msg
+        p msg
+        m = JSON.parse msg
+        puts "Play: #{m['slug']}"
+        settings.is.play m['slug'], m['msec']
       end
 
       ws.onclose do

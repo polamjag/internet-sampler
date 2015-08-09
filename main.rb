@@ -179,9 +179,7 @@ get '/' do
       end
 
       ws.onmessage do |msg|
-        p msg
         m = JSON.parse msg
-        puts "Play: #{m['slug']}"
         settings.is.play m['slug'], m['msec']
       end
 

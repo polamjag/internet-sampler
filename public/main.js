@@ -5,6 +5,23 @@ window.onload = (function(){
   };
 
   var ws       = new WebSocket(ws_url);
+
+  var play = function(slug, count) {
+    if (document.getElementById('checkbox-play-on-device').checked) {
+      target = $(".play[data-track=" + slug + "] audio")[0];
+      if (document.getElementById('checkbox-rewind-on-play').checked) {
+        target.currentTime = 0;
+      }
+      target.play();
+    }
+
+    if (count != null) {
+      $(".play[data-track=" + slug + "] .count")[0].innerHTML = count;
+    } else {
+      $(".play[data-track=" + slug + "] .count")[0].innerHTML = parseInt($(".play[data-track=" + slug + "] .count")[0].innerHTML) + 1;
+    }
+  }
+
   ws.onopen    = function()  { show('WebSocket opened'); };
   ws.onclose   = function()  {
     show('WebSocket closed');
@@ -16,12 +33,7 @@ window.onload = (function(){
 
     if (data["type"] == "play") {
       show("Play: " + data["slug"] + " in latency " + (Date.now() - data["msec"]) + "msec");
-      if (document.getElementById('checkbox-rewind-on-play').checked) {
-        target = $(".play[data-track=" + data["slug"] + "] audio")[0];
-        target.currentTime = 0;
-        target.play();
-      }
-      $(".play[data-track=" + data["slug"] + "] .count")[0].innerHTML = data["count"];
+      play(data["slug"], data["count"]);
     } else if (data["type"] == "num") {
       show("Client number update: " + data["count"]);
       document.getElementById("number").firstChild.nodeValue = data["count"];
@@ -41,5 +53,6 @@ window.onload = (function(){
       })
     );
     show('Sent: ' + tg);
+    play(tg, null);
   });
 });

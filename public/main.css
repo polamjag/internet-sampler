@@ -1,6 +1,7 @@
 body {
   font-family: sans-serif;
   background-color: #efefef;
+  margin: 0 1.5em;
 }
 
 #number {
@@ -26,6 +27,7 @@ body {
 
 .play-container {
   display: block;
+  padding-top: 1em;
 }
 
 .play {
@@ -33,8 +35,9 @@ body {
   width: 200px;
   height: 200px;
   cursor: pointer;
+  vertical-align: top;
 
-  margin: 14px;
+  margin-right: 14px;
   padding: 14px;
 
   text-align: center;
@@ -48,7 +51,7 @@ body {
   border-radius: 10px;
   background-color: #ccc;
 
-  transition: transform .1s ease 0s, color .1s ease 0s, background .1s ease 0s, border .1s ease 0s, box-shadow .1s ease 0s;
+  transition: all .1s ease 0s;
 }
 
 .play:hover {
@@ -100,4 +103,3 @@ body {
 footer p {
   font-size: .8em;
 }
-

@@ -32,7 +32,7 @@ window.onload = (function(){
     var data = $.parseJSON(m.data);
 
     if (data["type"] == "play") {
-      show("Play: " + data["slug"] + " in latency " + (Date.now() - data["msec"]) + "msec");
+      show("Play: " + data["slug"] + " in RTT " + (Date.now() - data["msec"]) + "msec");
       play(data["slug"], data["count"]);
     } else if (data["type"] == "num") {
       show("Client number update: " + data["count"]);

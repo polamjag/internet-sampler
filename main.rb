@@ -139,22 +139,26 @@ configure do
         {
           slug: "エモい",
           path: "/mp3/emoi.mp3",
-          description: ""
+          description: "",
+          positive: true
         },
         {
           slug: "最高",
           path: "/mp3/saiko.mp3",
-          description: ""
+          description: "",
+          positive: true
         },
         {
           slug: "銅鑼",
           path: "/mp3/Gong-266566.mp3",
-          description: ""
+          description: "",
+          positive: false
         },
         {
           slug: "Frontliner",
           path: "/mp3/frontliner-fsharp-kick.mp3",
-          description: ""
+          description: "",
+          positive: false
         }
       ],
       Redis.new(host: "127.0.0.1", port:"6379")

@@ -13,6 +13,7 @@ window.onload = (function(){
         target.currentTime = 0;
       }
       target.play();
+      if (typeof(window.navigator.vibrate) === "function") { window.navigator.vibrate(70); }
     }
 
     var $play = $(".play[data-track=" + slug + "] .count");

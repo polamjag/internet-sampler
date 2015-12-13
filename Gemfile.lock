@@ -3,10 +3,10 @@ PATH
   specs:
     internet-sampler (0.1.0)
       redis
-      sinatra (~> 1.4.6)
-      sinatra-contrib (~> 1.4.6)
+      sinatra (~> 1.4)
+      sinatra-contrib (~> 1.4)
       sinatra-websocket
-      slim (~> 3.0.6)
+      slim (~> 3.0)
 
 GEM
   remote: https://rubygems.org/

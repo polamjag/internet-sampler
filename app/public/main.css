@@ -1,7 +1,11 @@
 body {
   font-family: sans-serif;
-  background-color: #efefef;
+  background-color: #D9D8D5;
   margin: 0 1.5em;
+}
+
+h1 {
+  font-weight: 700;
 }
 
 #number {
@@ -27,7 +31,6 @@ body {
 
 .play-container {
   display: block;
-  padding-top: 1em;
 }
 
 .play {
@@ -38,6 +41,7 @@ body {
   vertical-align: top;
 
   margin-right: 14px;
+  margin-bottom: 14px;
   padding: 14px;
 
   text-align: center;
@@ -47,23 +51,22 @@ body {
   font-weight: bold;
   font-size: 20px;
 
-  border: 2px solid #555;
-  border-radius: 10px;
-  background-color: #ccc;
+  border-radius: 4px;
+  background-color: #8A8B91;
+
+  box-shadow: 0 0 9px #777;
 
   transition: all .1s ease 0s;
 }
 
 .play:hover {
-  border: 2px solid #333;
   background-color: #999;
 }
 
 .play:active {
   color: #fff;
-  border: 2px solid #111;
   background-color: #777;
-  transform: scale(0.95, 0.95);
+  box-shadow: 0 0 7px #C63851, 0 0 3px #333 inset;
 }
 
 .play audio {
@@ -77,21 +80,68 @@ body {
   font-size: 3em;
 }
 
+.checkbox-wrapper {
+  margin-top: 3.5em;
+}
+
+.checkbox {
+  display: inline-block;
+}
+
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox label {
+  display: inline-block;
+
+  cursor: pointer;
+  font-size: .8em;
+
+  padding: .3em .7em;
+  border: 1px solid #888;
+  border-radius: 3px;
+  transition: all .1s ease 0s;
+}
+
+.checkbox label:hover {
+  opacity: .8;
+}
+
+.checkbox input[type="checkbox"]:checked ~ label {
+  background: #E1A6A2;
+  box-shadow: 0 0 2px 1px #EF5F55 inset;
+  border-color: #A5554F;
+}
+
+.checkbox + .checkbox {
+  margin-left: .5em;
+}
+
 #msgs {
   display: block;
   border: 1px solid #777;
+  margin-top: 1em;
   padding: .3em;
-  margin-top: 5em;
   font-family: monospace;
   font-size: 10px;
   max-height: 10em;
   overflow: scroll;
 }
 
-@media only screen and (max-device-width: 736px) {
+@media only screen and (max-width: 550px) {
   .play {
     width: 90%;
+    height: 140px;
     margin: 14px auto;
+  }
+
+  .checkbox {
+    display: block;
+  }
+  .checkbox + .checkbox {
+    margin-top: .3em;
+    margin-left: 0;
   }
 }
 

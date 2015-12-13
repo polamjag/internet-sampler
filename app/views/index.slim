@@ -11,13 +11,7 @@ html
     script src="/main.js"
   body
     h1 Internet Sampler
-    #number = "*"
-    .checkbox.clickable
-      input type='checkbox' name='play-on-device' id='checkbox-play-on-device' checked="checked"
-      label for='checkbox-play-on-device' Play sound on this device
-    .checkbox.clickable
-      input type='checkbox' name='rewind-on-play' id='checkbox-rewind-on-play' checked="checked"
-      label for='checkbox-rewind-on-play' Rewind on play
+    #number *
 
     .play-container
       - @tracks.each do |track|
@@ -25,7 +19,17 @@ html
           .tag = track[:slug]
           audio src="#{track[:path]}" preload="auto" controls="none"
           .count = (track[:count] || 0)
+
+    .checkbox-wrapper
+      .checkbox.clickable
+        input type='checkbox' name='play-on-device' id='checkbox-play-on-device' checked="checked"
+        label for='checkbox-play-on-device' Play sound on this device
+      .checkbox.clickable
+        input type='checkbox' name='rewind-on-play' id='checkbox-rewind-on-play' checked="checked"
+        label for='checkbox-rewind-on-play' Rewind on play
+
     #msgs
+
     footer
       p
         .widgets

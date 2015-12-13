@@ -1,6 +1,6 @@
 window.onload = (function(){
   var show = function(msg){
-    el = document.getElementById('msgs');
+    var el = document.getElementById('msgs');
     el.innerHTML = msg + '<br>' + el.innerHTML;
   };
 
@@ -8,19 +8,21 @@ window.onload = (function(){
 
   var play = function(slug, count) {
     if (document.getElementById('checkbox-play-on-device').checked) {
-      target = $(".play[data-track=" + slug + "] audio")[0];
+      var target = $(".play[data-track=" + slug + "] audio")[0];
       if (document.getElementById('checkbox-rewind-on-play').checked) {
         target.currentTime = 0;
       }
       target.play();
+      if (typeof(window.navigator.vibrate) === "function") { window.navigator.vibrate(70); }
     }
 
+    var $play = $(".play[data-track=" + slug + "] .count");
     if (count != null) {
-      $(".play[data-track=" + slug + "] .count")[0].innerHTML = count;
+      $play.text(count);
     } else {
-      $(".play[data-track=" + slug + "] .count")[0].innerHTML = parseInt($(".play[data-track=" + slug + "] .count")[0].innerHTML) + 1;
+      $play.text(~~($play.text()) + 1);
     }
-  }
+  };
 
   ws.onopen    = function()  { show('WebSocket opened'); };
   ws.onclose   = function()  {
@@ -44,8 +46,9 @@ window.onload = (function(){
     }
   };
 
-  $('.play').mousedown(function(f){
-    tg = f.currentTarget.getAttribute('data-track');
+  var evname = ('ontouchstart' in document) ? 'touchstart' : 'click';
+  $('.play').on(evname, function(f){
+    var tg = f.currentTarget.getAttribute('data-track');
     ws.send(
       JSON.stringify({
         slug: tg,

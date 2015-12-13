@@ -2,4 +2,4 @@
 
 require 'internet-sampler'
 
-InternetSampler::CLI.new ARGV
+InternetSampler.run! ARGV

@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'internet-sampler'
+
+InternetSampler::CLI.new ARGV

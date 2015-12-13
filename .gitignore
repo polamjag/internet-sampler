@@ -1,9 +1,11 @@
-/.bundle
+/.bundle/
 /vendor
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
 
-*.sw*
-*~
-
-dump.rdb
-
-.DS_Store
+/dump.rdb

@@ -8,11 +8,11 @@ window.onload = (function(){
 
   var play = function(slug, count) {
     if (document.getElementById('checkbox-play-on-device').checked) {
-      var target = $(".play[data-track=" + slug + "] audio")[0];
+      var $target = $(".play[data-track=" + slug + "] audio")[0];
       if (document.getElementById('checkbox-rewind-on-play').checked) {
-        target.currentTime = 0;
+        $target.currentTime = 0;
       }
-      target.play();
+      $target.play();
       if (typeof(window.navigator.vibrate) === "function") { window.navigator.vibrate(70); }
     }
 
@@ -56,6 +56,5 @@ window.onload = (function(){
       })
     );
     show('Sent: ' + tg);
-    play(tg, null);
   });
 });

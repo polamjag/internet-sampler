@@ -99,19 +99,26 @@ h1 {
   padding: .3em .7em;
   border: 1px solid #888;
   border-radius: 3px;
-  transition: all .1s ease 0s;
   box-shadow: 0 0 3px #888 inset;
   background-color: #ccc;
+  color: #666;
+
+  transition: all .1s ease 0s;
 }
 
 .checkbox label:hover {
   opacity: .8;
 }
 
+.checkbox label:active {
+  transform: translateY(1px);
+}
+
 .checkbox input[type="checkbox"]:checked ~ label {
   background-color: #E1A6A2;
   box-shadow: 0 0 2px 1px #EF5F55 inset;
   border-color: #A5554F;
+  color: #000;
 }
 
 .checkbox + .checkbox {

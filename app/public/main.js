@@ -4,7 +4,7 @@ window.onload = (function(){
     el.innerHTML = msg + '<br>' + el.innerHTML;
   };
 
-  var ws       = new WebSocket(ws_url);
+  var ws = new WebSocket(ws_url);
 
   var play = function(slug, count) {
     if (document.getElementById('checkbox-play-on-device').checked) {
@@ -46,7 +46,7 @@ window.onload = (function(){
     }
   };
 
-  var evname = ('ontouchstart' in document) ? 'touchstart' : 'click';
+  var evname = ('ontouchstart' in document) ? 'touchstart' : 'mousedown';
   $('.play').on(evname, function(f){
     var tg = f.currentTarget.getAttribute('data-track');
     ws.send(

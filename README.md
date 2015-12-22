@@ -1,11 +1,35 @@
 # INTERNET SAMPLER
 
+Internet Sampler is:
+
+- A Sampler as a Service
+- Realtive Collaborative Sampler Imprementation
+
 ## Up and running
 
 1. install ruby, bundler and redis
 1. clone repo and chdir into it
 1. `bundle install --path vendor/bundle`
 1. `bundle exec rackup`
+
+OR
+
+```
+$ gem install internet-sampler
+$ internet-sampler -t SLUG_OF_SAMPLE:/path/to/sample.mp3 -t SLUG_FOR_ANOTHER_SMAPLE:/path/2/sound.mp3
+```
+
+Note that path to sample is URL, not the filepath in your machine.
+
+You know there is `--help` like this:
+
+```
+Usage: internet-sampler [options]
+    -p, --port port                  port to listen (default is 9292)
+    -b, --bind host                  host to bind (default is localhost)
+    -e, --environment env            environment to run (production, test or development; default is development)
+    -t, --track slug:url             sample sound to serve (note that `url' is not path to file but URL to serve)
+```
 
 [see blog post about this app (in Japanese)](http://polamjag.hatenablog.jp/entry/2015/05/15/044314)
 

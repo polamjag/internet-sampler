@@ -6,6 +6,8 @@ window.onload = (function(){
 
   var ws = new WebSocket(ws_url);
 
+  var tracksCount = $('.play').size();
+
   var play = function(slug, count) {
     if (document.getElementById('checkbox-play-on-device').checked) {
       var $target = $(".play[data-track=" + slug + "] audio")[0];
@@ -46,9 +48,8 @@ window.onload = (function(){
     }
   };
 
-  var evname = ('ontouchstart' in document) ? 'touchstart' : 'mousedown';
-  $('.play').on(evname, function(f){
-    var tg = f.currentTarget.getAttribute('data-track');
+  var playByPad = function(padNode) {
+    var tg = padNode.getAttribute('data-track');
     ws.send(
       JSON.stringify({
         slug: tg,
@@ -56,5 +57,16 @@ window.onload = (function(){
       })
     );
     show('Sent: ' + tg);
+  };
+
+  var evname = ('ontouchstart' in document) ? 'touchstart' : 'mousedown';
+  $('.play').on(evname, function(f){
+    playByPad(f.currentTarget);
   });
+  window.addEventListener('keydown', function(e) {
+    var keyCodeIndex = e.keyCode - 51;
+    if (keyCodeIndex < tracksCount - 1) {
+      playByPad($('.play').get(keyCodeIndex));
+    }
+  }, true);
 });

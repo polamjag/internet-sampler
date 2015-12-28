@@ -64,7 +64,7 @@ window.onload = (function(){
     playByPad(f.currentTarget);
   });
   window.addEventListener('keydown', function(e) {
-    var keyCodeIndex = e.keyCode - 51;
+    var keyCodeIndex = e.keyCode - 49;
     if (keyCodeIndex < tracksCount - 1) {
       playByPad($('.play').get(keyCodeIndex));
     }
